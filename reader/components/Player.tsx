@@ -30,13 +30,13 @@ export default function Player() {
         </span>
       </div>
 
-      <div className="text-xs text-zinc-500">
+      {/* <div className="text-xs text-zinc-500">
         {totalChunks > 0
           ? `Chunk ${Math.min(currentIndex + 1, totalChunks)} / ${totalChunks} ${
               streamDone ? '' : '(streaming…)'
             }`
           : 'No document loaded'}
-      </div>
+      </div> */}
     </section>
   );
 }

@@ -2,31 +2,8 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { useReader } from '@/lib/reader-store';
+import { PlayIcon, PauseIcon, GearIcon } from '@radix-ui/react-icons';
 
-function IconPlay(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" {...props}>
-      <path fill="currentColor" d="M8 5v14l11-7z" />
-    </svg>
-  );
-}
-function IconPause(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" {...props}>
-      <path fill="currentColor" d="M6 5h4v14H6zM14 5h4v14h-4z" />
-    </svg>
-  );
-}
-function IconSettings(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" {...props}>
-      <path
-        fill="currentColor"
-        d="M12 8.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7Zm8.94 2.06-1.73-.3a7.78 7.78 0 0 0-.64-1.55l1-1.45a.8.8 0 0 0-.08-1.03l-1.4-1.4a.8.8 0 0 0-1.03-.08l-1.45 1a7.78 7.78 0 0 0-1.55-.64l-.3-1.73A.8.8 0 0 0 12.86 1h-1.72a.8.8 0 0 0-.79.66l-.3 1.73c-.55.15-1.07.37-1.55.64l-1.45-1a.8.8 0 0 0-1.03.08L4.62 4.51a.8.8 0 0 0-.08 1.03l1 1.45c-.27.48-.49 1-.64 1.55l-1.73.3a.8.8 0 0 0-.66.79v1.72c0 .39.28.72.66.79l1.73.3c.15.55.37 1.07.64 1.55l-1 1.45a.8.8 0 0 0 .08 1.03l1.4 1.4c.28.28.74.31 1.03.08l1.45-1c.48.27 1 .49 1.55.64l.3 1.73c.07.38.4.66.79.66h1.72c.39 0 .72-.28.79-.66l.3-1.73c.55-.15 1.07-.37 1.55-.64l1.45 1c.29.23.75.2 1.03-.08l1.4-1.4a.8.8 0 0 0 .08-1.03l-1-1.45c.27-.48.49-1 .64-1.55l1.73-.3c.38-.07.66-.4.66-.79v-1.72a.8.8 0 0 0-.66-.79Z"
-      />
-    </svg>
-  );
-}
 
 export default function Controls() {
   const {
@@ -135,11 +112,11 @@ export default function Controls() {
   return (
     <section className="w-full max-w-3xl flex flex-col gap-3">
       {/* Top line: chunk counter on the right */}
-      <div className="flex items-center">
+      {/* <div className="flex items-center">
         <div className="ml-auto text-sm text-zinc-500">
           {totalChunks > 0 ? `Chunk ${currentIndex + 1} / ${totalChunks}` : ''}
         </div>
-      </div>
+      </div> */}
 
       {/* Progress bar with hover tooltip + drag-to-seek */}
       <div className="flex flex-col gap-1 select-none">
@@ -199,7 +176,7 @@ export default function Controls() {
           aria-label={isPlaying ? 'Pause' : 'Play'}
           title={isPlaying ? 'Pause' : 'Play'}
         >
-          {isPlaying ? <IconPause /> : <IconPlay />}
+          {isPlaying ? <PauseIcon className="w-5 h-5" aria-hidden="true" /> : <PlayIcon className="w-5 h-5" aria-hidden="true" />}
         </button>
 
         <button
@@ -208,12 +185,12 @@ export default function Controls() {
           aria-label="Settings"
           title="Settings"
         >
-          <IconSettings />
+          <GearIcon className="w-5 h-5" aria-hidden="true" />
         </button>
 
-        <div className="ml-auto text-xs text-zinc-500">
+        {/* <div className="ml-auto text-xs text-zinc-500">
           Base: {baseWPM} WPM • Inst: {instWPM || 0} WPM • Avg: {dynamicWPM || 0} WPM
-        </div>
+        </div> */}
       </div>
 
       {/* Settings panel (advanced controls) */}

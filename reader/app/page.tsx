@@ -75,8 +75,6 @@ function HomeInner() {
         streamDone ? 'justify-center' : ''
       }`}
     >
-      {!streamDone && <h1 className="text-2xl font-bold">AI-augmented RSVP Reader</h1>}
-
       {!streamDone && <DocumentInput />}
 
       {streamDone && (
